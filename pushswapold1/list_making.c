@@ -6,7 +6,7 @@
 /*   By: fvaliyak <fvaliyak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:47:06 by fvaliyak          #+#    #+#             */
-/*   Updated: 2023/03/10 11:33:31 by fvaliyak         ###   ########.fr       */
+/*   Updated: 2023/02/14 18:50:57 by fvaliyak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,9 @@ t_stack	*list_settings(int n, char **argc, t_stack *top)
 		while (len > 0)
 		{
 			if (check_duplicate(top, a[--len]) == 0)
-			{
-				free(a);
 				exit_for_error(&top, NULL);
-			}
 			top = create_node(top, a[len]);
 		}
-		free(a);
 	}
 	else
 	{

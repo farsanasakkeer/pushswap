@@ -6,7 +6,7 @@
 /*   By: fvaliyak <fvaliyak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:57:32 by fvaliyak          #+#    #+#             */
-/*   Updated: 2023/03/10 13:55:10 by fvaliyak         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:40:44 by fvaliyak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <ctype.h>
 # include <stddef.h>
-# include<stdio.h>
+#include<stdio.h>
 
 typedef struct s_stack
 {
@@ -26,6 +26,7 @@ typedef struct s_stack
 	int				index;
 	struct s_stack	*next;
 }					t_stack;
+void	displayList(t_stack *catchead);
 long	int	ft_atoi(const char *str, t_stack *top);
 t_stack	*create_node(t_stack *top, int data);
 t_stack	*list_settings(int n, char **argc, t_stack *top);

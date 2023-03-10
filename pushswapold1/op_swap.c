@@ -1,36 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handle.c                                     :+:      :+:    :+:   */
+/*   op_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvaliyak <fvaliyak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/10 20:34:32 by fvaliyak          #+#    #+#             */
-/*   Updated: 2023/03/10 13:44:23 by fvaliyak         ###   ########.fr       */
+/*   Created: 2023/02/06 21:32:04 by fvaliyak          #+#    #+#             */
+/*   Updated: 2023/02/27 17:30:06 by fvaliyak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	free_stack(t_stack **stack)
+void	swap_fn(t_stack *top)
 {
-	t_stack	*tmp;
+	int	temp;
 
-	if (!stack || !(*stack))
+	if (!top || top->next == NULL)
 		return ;
-	while (*stack)
-	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
-	}
-	*stack = NULL;
+	temp = top->data;
+	top->data = top->next->data;
+	top->next->data = temp;
 }
 
-void	exit_for_error(t_stack **stack_a, t_stack **stack_b)
+void	sa(t_stack *top)
 {
-	free_stack(stack_a);
-	free_stack(stack_b);
-	write (2, "Error\n", 6);
-	exit (1);
+	swap_fn(top);
+	write(1, "sa\n", 3);
+}
+
+void	sb(t_stack *list)
+{
+	swap_fn(list);
+	write(1, "sb\n", 3);
+}
+
+void	ss(t_stack *stack_a, t_stack *stack_b)
+{
+	sa(stack_a);
+	sb(stack_b);
+	write(1, "ss\n", 3);
 }
