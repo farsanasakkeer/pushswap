@@ -6,7 +6,7 @@
 /*   By: fvaliyak <fvaliyak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:33:42 by fvaliyak          #+#    #+#             */
-/*   Updated: 2023/03/10 10:00:06 by fvaliyak         ###   ########.fr       */
+/*   Updated: 2023/02/14 21:44:01 by fvaliyak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,59 @@ void	displayList(t_stack *catchead)
 
 	if (catchead == NULL)
 	{
-		printf("NULL\n");
+		printf("\nList is empty\n");
 		return ;
 	}
 	//printf("elements of list are : ");
 	temp = catchead;
 	while (temp != NULL)
 	{
-		printf("%d ",temp->data);
+		printf("\n%d %d", temp->data,temp->position);
 		temp = temp->next;
 	}
 	printf("\n");
 }
 
+// t_stack *three_element_sort(t_stack *stack_a)
+// {
+	
+// 	return(0);
+// }
 
-void	push_swap(t_stack **stack_a, t_stack **stack_b)
+int	large_value_pos(t_stack *stack)
 {
-	int	elements;
+	t_stack	*tmp;
+	int		large;
+	int		pos;
 
-	elements = put_position(*stack_a);
-	if (elements == 2)
-		sa(*stack_a);
-	else if (elements == 3)
-		three_element_sort(stack_a);
-	else if (elements == 4)
-		four_element_sort(stack_a, stack_b);
-	else if (elements == 5)
-		five_element_sort(stack_a, stack_b);
-	else
+	tmp = stack;
+	large = tmp->data;
+	pos = tmp->position;
+	while (tmp->next)
 	{
-		indexing(stack_a);
-		big_sort(stack_a, stack_b);
+		tmp = tmp->next;
+		if (large < tmp->data)
+		{
+			large = tmp->data;
+			pos = tmp->position;
+		}
+		
+	}
+	return (pos);
+}
+
+void	put_position(t_stack *stack)
+{
+	t_stack	*tmp;
+	int		i;
+
+	tmp = stack;
+	i = 1;
+	while (tmp)
+	{
+		tmp->position = i;
+		tmp = tmp->next;
+		i++;
 	}
 }
 
@@ -56,21 +78,48 @@ int	main(int argn, char **argc)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		flag;
+	int	flag;
 
 	if (argn < 2)
 		return (0);
 	flag = is_number(argn, argc);
 	if (flag == 0)
 	{
-		exit_for_error(NULL, NULL);
+		exit_for_error(NULL,NULL);
 	}
 	stack_b = NULL;
 	stack_a = convert_to_lst(argn, argc);
-	if ((is_sorted(stack_a)) == 0)
-		push_swap(&stack_a, &stack_b);
-	//displayList(stack_a);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+	printf("\ninitially stack a: ");
+	displayList(stack_a);
+
+	if((is_sorted(stack_a))==1)
+	{
+		printf("\nsorted");
+		
+		
+	}
+	else
+	{
+		printf("\nnot sorted");
+		put_position(stack_a);
+		printf("\n%d ",argn);
+		if (argn == 3)
+			sa(stack_a);
+		else if (argn == 4)
+		{
+			printf("\nposition %d ",large_value_pos(stack_a));
+			
+		}
+		
+
+
+	}
+
+	printf("\n------\n");
+	printf("\nstack a is :");
+	displayList(stack_a);
+	printf("stack b is :");
+	displayList(stack_b);
+
 	return (0);
 }

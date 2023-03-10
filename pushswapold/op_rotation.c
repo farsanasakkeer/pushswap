@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_rotation.c                                      :+:      :+:    :+:   */
+/*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvaliyak <fvaliyak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:36:19 by fvaliyak          #+#    #+#             */
-/*   Updated: 2023/02/27 17:29:26 by fvaliyak         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:38:09 by fvaliyak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	rb(t_stack **stack_b)
 		tail = tail->next;
 	tail->next = temp;
 	temp->next = NULL;
-	write(1, "rb\n", 3);
 }
 
 void	ra(t_stack **stack_a)
@@ -39,12 +38,10 @@ void	ra(t_stack **stack_a)
 		tail = tail->next;
 	tail->next = temp;
 	temp->next = NULL;
-	write(1, "ra\n", 3);
 }
 
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	ra(stack_a);
 	rb(stack_b);
-	write(1, "rr\n", 3);
 }

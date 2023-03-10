@@ -1,43 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_swap.c                                          :+:      :+:    :+:   */
+/*   op_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvaliyak <fvaliyak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 21:32:04 by fvaliyak          #+#    #+#             */
-/*   Updated: 2023/02/27 17:30:06 by fvaliyak         ###   ########.fr       */
+/*   Created: 2023/02/07 19:31:57 by fvaliyak          #+#    #+#             */
+/*   Updated: 2023/02/07 19:32:22 by fvaliyak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	swap_fn(t_stack *top)
+void	pb(t_stack **stack_b, t_stack **stack_a)
 {
-	int	temp;
+	t_stack	*tmp;
 
-	if (!top || top->next == NULL)
+	if (!stack_a)
 		return ;
-	temp = top->data;
-	top->data = top->next->data;
-	top->next->data = temp;
+	tmp = (*stack_a)->next;
+	(*stack_a)->next = *stack_b;
+	*stack_b = *stack_a;
+	*stack_a = tmp;
 }
 
-void	sa(t_stack *top)
+void	pa(t_stack **stack_a, t_stack **stack_b)
 {
-	swap_fn(top);
-	write(1, "sa\n", 3);
-}
+	t_stack	*tmp;
 
-void	sb(t_stack *list)
-{
-	swap_fn(list);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_stack *stack_a, t_stack *stack_b)
-{
-	sa(stack_a);
-	sb(stack_b);
-	write(1, "ss\n", 3);
+	if (!stack_b)
+		return ;
+	tmp = (*stack_b)->next;
+	(*stack_b)->next = *stack_a;
+	*stack_a = *stack_b;
+	*stack_b = tmp;
 }

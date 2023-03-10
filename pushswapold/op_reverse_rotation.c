@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_reverse_rotation.c                              :+:      :+:    :+:   */
+/*   reverse_rotation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvaliyak <fvaliyak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:26:20 by fvaliyak          #+#    #+#             */
-/*   Updated: 2023/02/27 17:28:55 by fvaliyak         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:27:06 by fvaliyak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	rra(t_stack **stack_a)
 	}
 	(*stack_a)->next = temp;
 	tail->next = NULL;
-	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack **stack_b)
@@ -43,12 +42,10 @@ void	rrb(t_stack **stack_b)
 	}
 	(*stack_b)->next = temp;
 	tail->next = NULL;
-	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	rra(stack_a);
 	rrb(stack_b);
-	write(1, "rrr\n", 4);
 }
