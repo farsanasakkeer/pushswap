@@ -1,7 +1,0 @@
-{
-	"files.associations": {
-		"pushswap.h": "c",
-		"algorithm": "c",
-		"__node_handle": "c"
-	}
-}
